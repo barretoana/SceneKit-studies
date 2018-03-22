@@ -10,7 +10,7 @@ class MyViewController : UIViewController {
     override func loadView() {
         
         sceneView = SCNView(frame: CGRect(x: 0.0, y: 0.0, width: 500, height: 600))
-        sceneView.backgroundColor = UIColor.yellow
+        sceneView.backgroundColor = UIColor.black
         sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
         self.view = sceneView
@@ -37,6 +37,7 @@ class MyViewController : UIViewController {
         
         //Geometry: Floor - default reflectivity 0.25
         let floorGeo = SCNFloor()
+        floorGeo.firstMaterial!.diffuse.contents = UIColor.black
         
         let floorNode = SCNNode(geometry: floorGeo)
         floorNode.position = SCNVector3Make(0, 0, 0)
@@ -143,10 +144,9 @@ class MyViewController : UIViewController {
         
         
         
-        
         //Geometry: Tube
         let tubeGeo = SCNTube(innerRadius: 3.0, outerRadius: 5.0, height: 10.0)
-        tubeGeo.firstMaterial!.diffuse.contents = UIColor.gray
+        tubeGeo.firstMaterial!.diffuse.contents = UIColor.yellow
         
         let tubeNode = SCNNode(geometry: tubeGeo)
         tubeNode.position = SCNVector3Make(-20, 5, 15)
@@ -158,7 +158,7 @@ class MyViewController : UIViewController {
         
         //Geometry: Text
         let textGeo = SCNText(string: "Hello World!", extrusionDepth: 5.0)
-        textGeo.firstMaterial!.diffuse.contents = UIColor.darkGray
+        textGeo.firstMaterial!.diffuse.contents = UIColor.white
         
         
         let textNode = SCNNode(geometry: textGeo)
