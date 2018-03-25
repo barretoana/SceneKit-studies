@@ -55,7 +55,7 @@ class MyViewController : UIViewController, SCNSceneRendererDelegate {
     func customGeometry() -> SCNGeometry {
         
         //changing the t gives you all kinds of different structures
-        let t = 5.0  // (1.0 + sqrt(5.0)) / 2.0; - this function creates a icosahedron
+        let t = (1.0 + sqrt(5.0)) / 2.0; // - this function creates a icosahedron
         
         let vertices: [SCNVector3] = [
             SCNVector3(-1,  t, 0), SCNVector3( 1,  t, 0), SCNVector3(-1, -t, 0), SCNVector3( 1, -t, 0),
@@ -81,6 +81,8 @@ class MyViewController : UIViewController, SCNSceneRendererDelegate {
         
         let indexData = NSData(bytes: indices, length: MemoryLayout<Int32>.size * indices.count) as Data
         
+        
+        //changing primitiveType and primitiveCount results in all kinds of weird stuff
         let element = SCNGeometryElement(data: indexData,
                                          primitiveType: .line,
                                          primitiveCount: indices.count/2,
